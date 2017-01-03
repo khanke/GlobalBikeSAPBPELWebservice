@@ -22,34 +22,34 @@ public interface MarketWS {
 
     /**
      * 
-     * @param materiallist
-     * @param supplierNumber
+     * @param arg1
+     * @param arg0
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "updateRawMaterials")
-    @WebResult(name = "success", partName = "success")
-    @Action(input = "updateRawMaterials", output = "http://marketWebservice/MarketWS/updateRawMaterialsResponse")
-    public String updateRawMaterials(
-        @WebParam(name = "supplierNumber", partName = "supplierNumber")
-        String supplierNumber,
-        @WebParam(name = "materiallist", partName = "materiallist")
-        String materiallist);
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://marketWebservice/MarketWS/getBestOfferRequest", output = "http://marketWebservice/MarketWS/getBestOfferResponse")
+    public String getBestOffer(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
 
     /**
      * 
-     * @param partNumber
-     * @param budget
+     * @param arg1
+     * @param arg0
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "getBestOffer")
+    @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "getBestOffer", output = "http://marketWebservice/MarketWS/getBestOfferResponse")
-    public String getBestOffer(
-        @WebParam(name = "partNumber", partName = "partNumber")
-        String partNumber,
-        @WebParam(name = "budget", partName = "budget")
-        String budget);
+    @Action(input = "http://marketWebservice/MarketWS/updateRawMaterialsRequest", output = "http://marketWebservice/MarketWS/updateRawMaterialsResponse")
+    public String updateRawMaterials(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
 
 }

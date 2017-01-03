@@ -6,7 +6,7 @@ import java.util.Random;
 import com.thoughtworks.xstream.XStream;
 
 import marketWebservice.MarketWS;
-import marketWebservice.MarketWSService;
+import marketWebservice.MarketWSServerService;
 import materialstamm.Material;
 import rawMatWebservice.RawMaterialsWS;
 import rawMatWebservice.RawMaterialsWSService;
@@ -16,7 +16,7 @@ public class SupplierClient {
     public static RawMaterialsWS rawMaterialsWS;
 
 	public static void main(String[] args) {
-		MarketWSService service = new MarketWSService();
+		MarketWSServerService service = new MarketWSServerService();
         RawMaterialsWSService rmWS = new RawMaterialsWSService();
 		marketWS = service.getMarketWSPort();
 		rawMaterialsWS = rmWS.getRawMaterialsWSPort();
@@ -25,8 +25,6 @@ public class SupplierClient {
 
 	public SupplierClient() {
 	  String materiallist = rawMaterialsWS.getRawMaterials("GBI-206", "GBI-206");
-//	  System.out.println(materiallist);
-      System.out.println("#######################################################");
 	  
       XStream xstream = new XStream();
       Object obj = xstream.fromXML(materiallist);

@@ -3,7 +3,7 @@ import java.util.List;
 import com.thoughtworks.xstream.XStream;
 
 import marketWebservice.MarketWS;
-import marketWebservice.MarketWSService;
+import marketWebservice.MarketWSServerService;
 import materialstamm.Material;
 import orderWebservice.OrderWS;
 import orderWebservice.OrderWSService;
@@ -16,7 +16,7 @@ public class GBIProcurementClient {
 	public static RawMaterialsWS rawMaterialsWS;
 
 	public static void main(String[] args) {
-		MarketWSService mservice = new MarketWSService();
+	  MarketWSServerService mservice = new MarketWSServerService();
 		OrderWSService oservice = new OrderWSService();
 		RawMaterialsWSService rservice = new RawMaterialsWSService();
 		marketWS = mservice.getMarketWSPort();

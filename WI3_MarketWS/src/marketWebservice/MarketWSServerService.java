@@ -17,48 +17,48 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "MarketWSService", targetNamespace = "http://marketWebservice/", wsdlLocation = "http://139.174.101.123:8082/MarketWS?wsdl")
-public class MarketWSService
+@WebServiceClient(name = "MarketWSServerService", targetNamespace = "http://marketWebservice/", wsdlLocation = "http://localhost:8082/MarketWS?wsdl")
+public class MarketWSServerService
     extends Service
 {
 
-    private final static URL MARKETWSSERVICE_WSDL_LOCATION;
-    private final static WebServiceException MARKETWSSERVICE_EXCEPTION;
-    private final static QName MARKETWSSERVICE_QNAME = new QName("http://marketWebservice/", "MarketWSService");
+    private final static URL MARKETWSSERVERSERVICE_WSDL_LOCATION;
+    private final static WebServiceException MARKETWSSERVERSERVICE_EXCEPTION;
+    private final static QName MARKETWSSERVERSERVICE_QNAME = new QName("http://marketWebservice/", "MarketWSServerService");
 
     static {
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://139.174.101.123:8082/MarketWS?wsdl");
+            url = new URL("http://localhost:8082/MarketWS?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
-        MARKETWSSERVICE_WSDL_LOCATION = url;
-        MARKETWSSERVICE_EXCEPTION = e;
+        MARKETWSSERVERSERVICE_WSDL_LOCATION = url;
+        MARKETWSSERVERSERVICE_EXCEPTION = e;
     }
 
-    public MarketWSService() {
-        super(__getWsdlLocation(), MARKETWSSERVICE_QNAME);
+    public MarketWSServerService() {
+        super(__getWsdlLocation(), MARKETWSSERVERSERVICE_QNAME);
     }
 
-    public MarketWSService(WebServiceFeature... features) {
-        super(__getWsdlLocation(), MARKETWSSERVICE_QNAME, features);
+    public MarketWSServerService(WebServiceFeature... features) {
+        super(__getWsdlLocation(), MARKETWSSERVERSERVICE_QNAME, features);
     }
 
-    public MarketWSService(URL wsdlLocation) {
-        super(wsdlLocation, MARKETWSSERVICE_QNAME);
+    public MarketWSServerService(URL wsdlLocation) {
+        super(wsdlLocation, MARKETWSSERVERSERVICE_QNAME);
     }
 
-    public MarketWSService(URL wsdlLocation, WebServiceFeature... features) {
-        super(wsdlLocation, MARKETWSSERVICE_QNAME, features);
+    public MarketWSServerService(URL wsdlLocation, WebServiceFeature... features) {
+        super(wsdlLocation, MARKETWSSERVERSERVICE_QNAME, features);
     }
 
-    public MarketWSService(URL wsdlLocation, QName serviceName) {
+    public MarketWSServerService(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
-    public MarketWSService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
+    public MarketWSServerService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
         super(wsdlLocation, serviceName, features);
     }
 
@@ -85,10 +85,10 @@ public class MarketWSService
     }
 
     private static URL __getWsdlLocation() {
-        if (MARKETWSSERVICE_EXCEPTION!= null) {
-            throw MARKETWSSERVICE_EXCEPTION;
+        if (MARKETWSSERVERSERVICE_EXCEPTION!= null) {
+            throw MARKETWSSERVERSERVICE_EXCEPTION;
         }
-        return MARKETWSSERVICE_WSDL_LOCATION;
+        return MARKETWSSERVERSERVICE_WSDL_LOCATION;
     }
 
 }

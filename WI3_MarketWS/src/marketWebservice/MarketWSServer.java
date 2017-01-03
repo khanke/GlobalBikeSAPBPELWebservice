@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.ws.Endpoint;
@@ -17,7 +18,7 @@ import order.Order;
 
 @WebService(name = "MarketWS", targetNamespace = "http://marketWebservice/")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public class MarketWSServer implements MarketWS {
+public class MarketWSServer {
 
   public final static String DEPLOYMENT_PATH = "http://localhost:8082/MarketWS";
   String result = "ERROR";
@@ -34,7 +35,7 @@ public class MarketWSServer implements MarketWS {
     System.out.println("Market Webservice running");
   }
 
-  @Override
+  @WebMethod
   public String updateRawMaterials(String supplierNumber, String materiallist) {
     System.out.println("BLKSÖLGFDSNFLÖSNFLÖ");
     // XML-String mittels XStream deserialisieren
@@ -52,7 +53,7 @@ public class MarketWSServer implements MarketWS {
     return result;
   }
 
-  @Override
+  @WebMethod
   public String getBestOffer(String partNumber, String budget) {
     String result;
     
