@@ -25,7 +25,9 @@ public class SupplierClient {
 
 	public SupplierClient() {
 	  String materiallist = rawMaterialsWS.getRawMaterials("GBI-206", "GBI-206");
-
+//	  System.out.println(materiallist);
+      System.out.println("#######################################################");
+	  
       XStream xstream = new XStream();
       Object obj = xstream.fromXML(materiallist);
       List<Material> material = null;
@@ -49,6 +51,7 @@ public class SupplierClient {
       
       XStream xstream = new XStream();
       String materiallist = xstream.toXML(material);
+
       System.out.println(supplier + " [" + marketWS.updateRawMaterials(supplier, materiallist) + "]");
 	}
 

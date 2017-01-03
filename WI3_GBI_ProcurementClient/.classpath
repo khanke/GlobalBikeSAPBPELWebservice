@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="lib/materialstamm.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/WI3_ERP_OrderWS"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/WI3_MarketWS"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/WI3_RawMaterialsWS"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

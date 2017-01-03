@@ -36,6 +36,7 @@ public class MarketWSServer implements MarketWS {
 
   @Override
   public String updateRawMaterials(String supplierNumber, String materiallist) {
+    System.out.println("BLKSÖLGFDSNFLÖSNFLÖ");
     // XML-String mittels XStream deserialisieren
     XStream xstream = new XStream();
     Object obj = xstream.fromXML(materiallist);
@@ -54,7 +55,7 @@ public class MarketWSServer implements MarketWS {
   @Override
   public String getBestOffer(String partNumber, String budget) {
     String result;
-
+    
     try {
 
       Set set = hmap.entrySet();
