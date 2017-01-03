@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
@@ -37,17 +40,41 @@ public class GBIProcurementClient {
       List<Material> material = null;
       if (obj instanceof List<?>) material = (List<Material>) obj;
       
-      String budget = "150";
-      String partNumber = material.get(0).getNumber();
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       
-	  // 3. und 4. Bestes Angebot heraussuchen
-      String offer = marketWS.getBestOffer(partNumber, budget);
-      System.out.println(offer);
-		
-      // 5. Bestellung aufgeben
-	  if(offer != "ERROR")
-	    System.out.println(orderWS.placeOrder("GBI-206", "GBI-206", offer));
-	  else
-	    System.out.println("Fehler");
+      try{
+          System.out.print("Wie hoch ist dein Budget?: ");
+          String budget = br.readLine();
+
+          System.out.println("---------------------------------- ");
+          for(int i = 0; i < material.size(); i++) {
+            System.out.println(material.get(i).getDescription() + " [" + i + "]");
+          }
+
+          System.out.println("---------------------------------- ");
+          System.out.print("Welches Material soll bestellt werden?: ");
+          int i = Integer.parseInt(br.readLine());
+          String partNumber = material.get(i).getNumber();
+     
+          // 3. und 4. Bestes Angebot heraussuchen
+          String offer = marketWS.getBestOffer(partNumber, budget);
+          System.out.println("---------------------------------- ");
+          System.out.println("Folgendes Angebot wurde ausgewählt: ");
+          System.out.println(offer);  
+          System.out.println("---------------------------------- ");
+          
+          // 5. Bestellung aufgeben
+          if(offer != "ERROR")
+            System.out.println(orderWS.placeOrder("GBI-206", "GBI-206", offer));
+          else
+            System.out.println("Fehler");
+          
+      }catch(NumberFormatException nfe){
+          System.err.println("Invalid Format!");
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+
 	}
 }

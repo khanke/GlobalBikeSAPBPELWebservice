@@ -37,7 +37,6 @@ public class MarketWSServer {
 
   @WebMethod
   public String updateRawMaterials(String supplierNumber, String materiallist) {
-    System.out.println("BLKSÖLGFDSNFLÖSNFLÖ");
     // XML-String mittels XStream deserialisieren
     XStream xstream = new XStream();
     Object obj = xstream.fromXML(materiallist);
