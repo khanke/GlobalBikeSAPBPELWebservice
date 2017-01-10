@@ -1,5 +1,6 @@
 package marketWebservice;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.ws.Endpoint;
@@ -35,15 +38,21 @@ public class MarketWSServer {
     System.out.println("Market Webservice running");
   }
 
-  @WebMethod
-  public String updateRawMaterials(String supplierNumber, String materiallist) {
+  
+  
+  @WebMethod(action = "updateRawMaterials")
+  @WebResult(name = "success")
+  public String updateRawMaterials(
+      @WebParam(name = "supplierNumber", partName = "supplierNumber") String supplierNumber,  
+      @WebParam(name = "materiallist", partName = "materiallist") String materiallist) {
     // XML-String mittels XStream deserialisieren
     XStream xstream = new XStream();
     Object obj = xstream.fromXML(materiallist);
-    List<Material> material = null;
+    List<Material> material = new ArrayList<>();
 
     if (obj instanceof List<?>) {
       material = (List<Material>) obj;
+      System.out.println(material.get(0).getNumber());
       if (hmap.replace(supplierNumber, material) == null)
         hmap.put(supplierNumber, material);
       result = "Success";
@@ -52,8 +61,13 @@ public class MarketWSServer {
     return result;
   }
 
-  @WebMethod
-  public String getBestOffer(String partNumber, String budget) {
+  
+  
+  @WebMethod(action = "getBestOffer")
+  @WebResult(name = "return")
+  public String getBestOffer(
+      @WebParam(name = "partNumber", partName = "partNumber") String partNumber, 
+      @WebParam(name = "budget", partName = "budget") String budget) {
     String result;
     
     try {
@@ -72,8 +86,8 @@ public class MarketWSServer {
             if (list.get(i).getPrice() < price) {
               price = list.get(i).getPrice();
               supplier = (String) mentry.getKey();
-              break;
             }
+            break; //wenn das Material geprüft wurde kann die Schleife abgebrochen werden
           }
         }
       }
@@ -99,6 +113,7 @@ public class MarketWSServer {
 
     } catch (Exception e) {
       result = "ERROR";
+      e.printStackTrace();
     }
 
     return result;

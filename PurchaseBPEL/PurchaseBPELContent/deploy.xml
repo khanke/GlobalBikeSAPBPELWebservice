@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:PurchaseBPELProcess="http://www.tu-clausthal.de/processes/PurchaseBPELProcess" xmlns:marketWebservice="http://marketWebservice/" xmlns:orderWebservice="http://orderWebservice/">
+  <process name="PurchaseBPELProcess:PurchasePBELProcess">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="PurchaseBPELProcess:PurchasePBELProcessService" port="PurchasePBELProcessPort"/>
+    </provide>
+    <invoke partnerLink="MarketWSPL">
+      <service name="marketWebservice:MarketWSServerService" port="MarketWSPort"/>
+    </invoke>
+    <invoke partnerLink="OrderWSPL">
+      <service name="orderWebservice:OrderWSService" port="OrderWSPort"/>
+    </invoke>
+  </process>
+</deploy>

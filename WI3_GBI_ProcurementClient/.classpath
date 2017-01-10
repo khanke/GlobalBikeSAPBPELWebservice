@@ -8,8 +8,8 @@
 	<classpathentry kind="lib" path="lib/xstream-1.4.3.jar"/>
 	<classpathentry kind="lib" path="lib/order.jar"/>
 	<classpathentry kind="lib" path="lib/materialstamm.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/WI3_ERP_OrderWS"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/WI3_MarketWS"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/WI3_RawMaterialsWS"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/WI3_ERP_OrderWS"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
